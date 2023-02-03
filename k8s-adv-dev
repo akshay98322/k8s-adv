@@ -1,0 +1,67 @@
+--det default namespace
+kubectl config set-context $(kubectl config current-context) --namespace=dev
+--check if the resource can be created
+--dry-run=client
+--generate the yaml
+--dry-run=client -o yaml
+--create a pod
+kubectl run <pod_name> --image=<image_name>
+--create a deployment
+kubectl create deployment --image=nginx nginx
+--scale the deploymentkubectl scale deployment nginx --replicas=4
+kubectl scale deployment nginx --replicas=4
+--Create a Service named redis-service of type ClusterIP to expose pod redis on port 6379
+kubectl expose pod redis --port=6379 --name redis-service --dry-run=client -o yaml
+--Create a Service named nginx of type NodePort to expose pod nginx's port 80 on port 30080 on the nodes:
+kubectl expose pod nginx --port=80 --name nginx-service --type=NodePort --dry-run=client -o yaml
+
+K8s Adv Dev Course
+
+###Pre-Requisite - Commands and Arguments in Docker
+ie: 1. Entrypoint will append the CLA, where as CMD will replace the CLA 
+--CMD example
+--docker file
+
+--command 
+docker run ub-sleeper sleep 15
+--op
+Start up with sleep 15
+--ENTRYPOINT example
+--docker file
+FROM Ubuntu
+ENTRYPOINT [“sleep”]
+--command 
+docker run ub-sleeper 20
+--op
+Start up with sleep 20
+
+ig: 2. If u want to set a default value in case CLA is not given, use both CMD and Entrypoint together.
+--bad entrypoint example
+--docker file
+FROM Ubuntu
+ENTRYPOINT [“sleep”]
+CMD [“5”]
+--command 
+docker run ub-sleeper
+--op
+It wont start expecting a parameter
+--good entrypoint example
+--docker file
+FROM Ubuntu
+ENTRYPOINT [“sleep”]
+CMD [“5”]
+--command 
+docker run ub-sleeper
+--op
+Start up with default sleep value 5
+--command 
+docker run ub-sleeper 10
+--op
+Start up with CLA sleep value 10
+
+b.	Node Affinity
+Examples:
+In type
+ 
+In type
+

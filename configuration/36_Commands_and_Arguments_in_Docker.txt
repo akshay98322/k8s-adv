@@ -1,0 +1,6 @@
+--difference between CMD and ENTRYPOINT
+    In command line argument CMD completetly replaces the argument where as ENTRYPOINT appends the argument. 
+    IF you specify both ENTRYPOINT and CMD in the dockerfile then, CMD will act as a defult argument, incase the argument is not passed during CLI it will pick the value from CMD.
+--To modify the ENTRYPOINT during runtime
+    Then mention the --entrypoint keyword in cli
+docker run --entrypoint <new_command> <docker_image> <cmd_line_argument>
